@@ -1,7 +1,7 @@
 import Queue
 
 
-dataStore = {"a": ["b"],
+dataStore = {"a": ["b","d"],
              "b": ["c"],
              "c": ["d"],
              "d": ["e"]
