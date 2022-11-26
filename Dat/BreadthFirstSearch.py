@@ -1,17 +1,19 @@
 import Queue
 
 
-dataStore = {"a": ["b", "d"],
-             "b": ["c"],
-             "c": ["d"],
-             "d": ["e"],
-             }
+dataStore = {
+    "a": ["b", "d"],
+    "b": ["c"],
+    "c": ["d"],
+    "d": ["e"],
+}
 
 
 def breadthFirstSearch(data):
     # initialized the stack last in first out
     frontier = Queue.Queue()
     exploredSet = []
+    previousState = []
 
     startState = "a"
     endState = "d"
@@ -20,6 +22,16 @@ def breadthFirstSearch(data):
 
     # add initialNode to frontier
     frontier.push(initialNode)
+
+    # print("successor", successor)
+    def isNotInFrontier(checkItem):
+        for frontierItem in frontier.list:
+            print("frontier state ", frontier.list)
+
+            # if frontierItem["state"] == checkItem:
+            # print("current node state is in frontier", frontierItem["state"])
+            return False
+        return True
 
     while True:
         if frontier.isEmpty():
@@ -30,6 +42,7 @@ def breadthFirstSearch(data):
         currentNode = frontier.pop()
         print("currentNode", currentNode)
         if endState == currentNode["state"]:
+            print("endNode", currentNode)
             print("endstate reached terminated program")
             return
 
@@ -38,15 +51,22 @@ def breadthFirstSearch(data):
         print("exploredSet", exploredSet)
 
         # get the next state
-        state = dataStore[currentNode["state"]]
-        print(state)
-        for item in state:
-            nextNode = {"state": item, "prevNode": currentNode["state"]}
-            print(nextNode)
+        successorState = dataStore[currentNode["state"]]
+        print("successorState", successorState)
+        previousState.append(
+            currentNode["state"])
+        for item in successorState:
+
+            nextNode = {"state": item, "prevNode": previousState}
+            print("nextNode", nextNode)
+
+            print("frontier list 1", frontier.list)
+
             # check to see if it's not already visited
-            if nextNode["state"] not in exploredSet:
-                print("not in state pushing", nextNode)
+            if nextNode["state"] not in exploredSet and isNotInFrontier(nextNode["state"]):
+                print("not in exploredSet adding to frontier", nextNode)
                 frontier.push(nextNode)
+                print("frontier list 2", frontier.list)
 
         # print(frontier)
         # print(item)
