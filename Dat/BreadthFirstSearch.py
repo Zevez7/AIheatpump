@@ -1,12 +1,13 @@
 import Queue
 
+import json
 
-dataStore = {
-    "a": ["b", "d"],
-    "b": ["c"],
-    "c": ["d"],
-    "d": ["e"],
-}
+# Opening JSON file
+f = open('./data/mockData.json')
+
+# returns JSON object as
+# a dictionary
+importData = json.load(f)
 
 
 def breadthFirstSearch(data):
@@ -28,9 +29,9 @@ def breadthFirstSearch(data):
         for frontierItem in frontier.list:
             print("frontier state ", frontier.list)
 
-            # if frontierItem["state"] == checkItem:
-            # print("current node state is in frontier", frontierItem["state"])
-            return False
+            if frontierItem["state"] == checkItem:
+                # print("current node state is in frontier", frontierItem["state"])
+                return False
         return True
 
     while True:
@@ -51,7 +52,7 @@ def breadthFirstSearch(data):
         print("exploredSet", exploredSet)
 
         # get the next state
-        successorState = dataStore[currentNode["state"]]
+        successorState = importData[currentNode["state"]]
         print("successorState", successorState)
         previousState.append(
             currentNode["state"])
@@ -67,15 +68,15 @@ def breadthFirstSearch(data):
                 print("not in exploredSet adding to frontier", nextNode)
                 frontier.push(nextNode)
                 print("frontier list 2", frontier.list)
-
-        # print(frontier)
-        # print(item)
-        # print(state)
-    # frontier.push()
+            else:
+                print("nextNode is in not added to frontierlist")
+                print(nextNode)
+                print(isNotInFrontier(nextNode["state"]))
+                print(frontier.list)
 
 
 def main():
-    breadthFirstSearch(dataStore)
+    breadthFirstSearch(importData)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,11 @@
+{
+  "1": {
+    "PID": 1,
+    "ST_NAME": "PUTNAM ST",
+    "CITY": "EAST BOSTON",
+    "LONGITUDE": 123123,
+    "LATITUDE": 123123,
+    "SUCCESSOR": [{ "PID": 2 }, { "PID": 3 }, { "PID": 10 }]
+  },
+  "2": {}
+}
