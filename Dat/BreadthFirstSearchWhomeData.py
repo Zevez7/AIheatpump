@@ -13,14 +13,29 @@ importData = json.load(f)
 mockedDataLoad = json.load(mockedData)
 
 
+def createNode(nodeStore, data):
+    for item in data:
+        createNode = Node.Node(item["PID"], item["SUCCESSOR"], item)
+
+        # store node inside nodeStroage
+        nodeStore[item["PID"]] = createNode
+
+def isNotInFrontier(currentNode, frontier):
+
+    for frontierItem in frontier.list:
+        print("frontier Item ", frontierItem.getId())
+
+        if frontierItem.getId() == currentNode.getId():
+            print("current node state is in frontier", currentNode.getId())
+            return False
+    return True
+
+
 def breadthFirstSearch(data):
 
     nodeStorage = defaultdict(list)
 
-    # loop through the mockedDataLoad and add the node to storage
-    for item in mockedDataLoad:
-        createNode = Node.Node(item["PID"], item["SUCCESSOR"], item)
-        nodeStorage[item["PID"]] = createNode
+    createNode(nodeStorage, data)
 
     # initialized the stack last in first out
     frontier = Queue.Queue()
@@ -34,16 +49,6 @@ def breadthFirstSearch(data):
 
     # add initialNode to frontier
     frontier.push(initialNode)
-
-    def isNotInFrontier(currentNode):
-
-        for frontierItem in frontier.list:
-            print("frontier Item ", frontierItem.getId())
-
-            if frontierItem.getId() == currentNode.getId():
-                print("current node state is in frontier", currentNode.getId())
-                return False
-        return True
 
     while True:
         if frontier.isEmpty():
@@ -89,7 +94,7 @@ def breadthFirstSearch(data):
             print("explored", exploredSet)
 
            # check to see if it's not in exploredSet or in the frontier
-            if nextNode.getId() not in exploredSet and isNotInFrontier(nextNode):
+            if nextNode.getId() not in exploredSet and isNotInFrontier(nextNode, frontier):
                 print("not in exploredSet adding to frontier", nextNode.getId())
                 frontier.push(nextNode)
             else:
@@ -97,7 +102,7 @@ def breadthFirstSearch(data):
 
 
 def main():
-    breadthFirstSearch(importData)
+    breadthFirstSearch(mockedDataLoad)
 
 
 if __name__ == "__main__":
