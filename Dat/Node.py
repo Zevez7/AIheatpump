@@ -1,29 +1,23 @@
 class Node():
     """A node class for A* Pathfinding"""
 
-    def __init__(self, name="", x=None, y=None):
-        # self.parent = parent
-        # self.position = position
-
-        self.g = 0
-        self.h = 0
-        self.f = 0
-        self.successor = []
-        self.x = x
-        self.y = y
-        self.name = name
-
-    def __eq__(self, other):
-        return self.position == other.position
+    def __init__(self, id="", successor=None, data=None):
+        self.id = id
+        self.successor = successor
+        self.data = data
+        self.previous = ""
 
     def getSuccessor(self):
         return self.successor
 
-    def getX(self):
-        return self.x
+    def getId(self):
+        return self.id
 
-    def getY(self):
-        return self.y
+    def getData(self):
+        return self.data
 
-    def getName(self):
-        return self.name
+    def setPreviousNode(self, previous):
+        self.previous = previous
+
+    def getPreviousNode(self):
+        return self.previous
