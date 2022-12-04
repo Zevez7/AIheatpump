@@ -1,9 +1,9 @@
 class Node():
     """A node class for A* Pathfinding"""
 
-    def __init__(self, id="", successor=None, data=None):
-        self.id = id
-        self.successor = successor
+    def __init__(self, data=None):
+        self.id = ""
+        self.successor = ""
         self.data = data
         self.previous = ""
 
@@ -21,3 +21,7 @@ class Node():
 
     def getPreviousNode(self):
         return self.previous
+
+    def setUpNode(self):
+        self.id = self.data["PID"]
+        self.successor = self.data["SUCCESSOR"]

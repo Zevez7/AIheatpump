@@ -15,10 +15,12 @@ mockedDataLoad = json.load(mockedData)
 
 def createNode(nodeStore, data):
     for item in data:
-        createNode = Node.Node(item["PID"], item["SUCCESSOR"], item)
+        createNode = Node.Node(item)
 
+        createNode.setUpNode()
         # store node inside nodeStroage
-        nodeStore[item["PID"]] = createNode
+        nodeStore[createNode.getId()] = createNode
+
 
 def isNotInFrontier(currentNode, frontier):
 
@@ -29,6 +31,17 @@ def isNotInFrontier(currentNode, frontier):
             print("current node state is in frontier", currentNode.getId())
             return False
     return True
+
+
+def printEndState(currentNode, nodeStorage):
+    print("endstate reached terminated program")
+    print("endNode Reached ID:", currentNode.getId())
+    iterNode = currentNode
+
+    while iterNode.getPreviousNode() != "":
+        print("previous node", iterNode.getData())
+        iterNode = nodeStorage[iterNode.getPreviousNode()]
+    print("previous node", iterNode.getData())
 
 
 def breadthFirstSearch(data):
@@ -43,7 +56,7 @@ def breadthFirstSearch(data):
     previousNode = ""
 
     startState = 1
-    endState = 6
+    endState = 5
 
     initialNode = nodeStorage[startState]
 
@@ -59,14 +72,7 @@ def breadthFirstSearch(data):
         currentNode = frontier.pop()
         print("currentNode", currentNode.getId())
         if endState == currentNode.getId():
-            print("endNode", currentNode.getData())
-            iterNode = currentNode
-            print("endstate reached terminated program")
-
-            while iterNode.getPreviousNode() != "":
-                print("previous node", iterNode.getId())
-                iterNode = nodeStorage[iterNode.getPreviousNode()]
-            print("previous node", iterNode.getId())
+            printEndState(currentNode, nodeStorage)
             return
 
         # add the explored state
@@ -93,7 +99,7 @@ def breadthFirstSearch(data):
             print("previous", nextNode.getPreviousNode())
             print("explored", exploredSet)
 
-           # check to see if it's not in exploredSet or in the frontier
+            # check to see if it's not in exploredSet or in the frontier
             if nextNode.getId() not in exploredSet and isNotInFrontier(nextNode, frontier):
                 print("not in exploredSet adding to frontier", nextNode.getId())
                 frontier.push(nextNode)
