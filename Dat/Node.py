@@ -6,6 +6,7 @@ class Node():
         self.successor = ""
         self.data = data
         self.previous = ""
+        self.setUpNode()
 
     def getSuccessor(self):
         return self.successor
