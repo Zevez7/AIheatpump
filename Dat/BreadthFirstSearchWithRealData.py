@@ -1,23 +1,27 @@
 from collections import defaultdict
 import Queue
 import json
-import Node
+from NodeRealData import Node
 
 # Opening JSON file
-f = open('./data/mockData.json')
-mockedData = open('./data/homeData.json')
+mockedData = open('./data/mockData.json')
+homeData = open('./data/homeData.json')
+realData = open('./data/realData.json')
 
 # returns JSON object as
 # a dictionary
-importData = json.load(f)
-mockedDataLoad = json.load(mockedData)
+# importData = json.load(f)
+# homeDataLoad = json.load(homeData)
+realDataLoad = json.load(realData)
+
+# print(realDataLoad)
 
 
 def createNode(nodeStore, data):
     for item in data:
-        createNode = Node.Node(item)
+        createNode = Node(item, nodeStore)
 
-        # store node inside nodeStroage
+        # store node inside nodeStorage
         nodeStore[createNode.getId()] = createNode
 
 
@@ -48,6 +52,18 @@ def breadthFirstSearch(data):
     nodeStorage = defaultdict(list)
 
     createNode(nodeStorage, data)
+
+    # print(nodeStorage[2])
+    # for x in nodeStorage:
+    #     print(nodeStorage[x].getData())
+    # y = x.getId()
+    # print(y)
+
+    nodeStorage[100010000].createSuccessor()
+
+    x = nodeStorage[100010000].getSuccessor()
+    print(x)
+    return
 
     # initialized the stack last in first out
     frontier = Queue.Queue()
@@ -107,7 +123,8 @@ def breadthFirstSearch(data):
 
 
 def main():
-    breadthFirstSearch(mockedDataLoad)
+    # breadthFirstSearch(homeDataLoad)
+    breadthFirstSearch(realDataLoad)
 
 
 if __name__ == "__main__":

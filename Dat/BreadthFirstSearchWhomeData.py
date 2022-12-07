@@ -5,12 +5,12 @@ import Node
 
 # Opening JSON file
 f = open('./data/mockData.json')
-mockedData = open('./data/homeData.json')
+homeData = open('./data/homeData.json')
 
 # returns JSON object as
 # a dictionary
 importData = json.load(f)
-mockedDataLoad = json.load(mockedData)
+homeDataLoad = json.load(homeData)
 
 
 def createNode(nodeStore, data):
@@ -107,7 +107,7 @@ def breadthFirstSearch(data):
 
 
 def main():
-    breadthFirstSearch(mockedDataLoad)
+    breadthFirstSearch(homeDataLoad)
 
 
 if __name__ == "__main__":
