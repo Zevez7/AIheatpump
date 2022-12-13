@@ -2,6 +2,7 @@ from collections import defaultdict
 import Queue
 import json
 from NodeRealData import Node
+from calculatedLongDistance import maxDist
 
 # Opening JSON file
 mockedData = open('./data/mockData.json')
@@ -47,36 +48,58 @@ def printEndState(currentNode, nodeStorage):
     print("previous node", iterNode.getData())
 
 
+def startAndEndNodeId(nodeStorage):
+    dataArray = []
+    # generate the start and end state nodes
+    for x in nodeStorage:
+
+        dataArray.append([nodeStorage[x].getLat(),
+                          nodeStorage[x].getLng(), nodeStorage[x].getId()])
+    startAndEndpoint = maxDist(dataArray)
+    return (startAndEndpoint[0][2], startAndEndpoint[1][2])
+
+
+def generateSuccessor(nodeStorage):
+    for x in nodeStorage:
+        nodeStorage[x].createSuccessor()
+
+        value = nodeStorage[x].getSuccessor()
+        print(x, "node", value)
+
+
 def breadthFirstSearch(data):
 
     nodeStorage = defaultdict(list)
 
+    # loops through the data and generate a node and store the node inside nodeStorage
     createNode(nodeStorage, data)
 
-    # print(nodeStorage[2])
-    # for x in nodeStorage:
-    #     print(nodeStorage[x].getData())
-    # y = x.getId()
-    # print(y)
-
-    nodeStorage[100010000].createSuccessor()
-
-    x = nodeStorage[100010000].getSuccessor()
-    print(x)
-    return
+    # generate successor for each node and save it in successor location
 
     # initialized the stack last in first out
     frontier = Queue.Queue()
-    exploredSet = []
+    exploredSet = [100003000, 100004000]
     previousNode = ""
 
-    startState = 1
-    endState = 5
+    # loop through the data and find the farthest node in the data and return the location
+    startAndEndId = startAndEndNodeId(nodeStorage)
+    startState = startAndEndId[0]
+    endState = startAndEndId[1]
+    print("start", startState, "end", endState)
 
     initialNode = nodeStorage[startState]
 
-    # add initialNode to frontier
+    # add first node to frontier
     frontier.push(initialNode)
+    print(initialNode.getId())
+
+    initialNode.createSuccessor(exploredSet, frontier)
+
+    x = initialNode.getSuccessor()
+    print(x)
+
+    # add initialNode to frontier
+    return
 
     while True:
         if frontier.isEmpty():

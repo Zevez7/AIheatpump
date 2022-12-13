@@ -42,7 +42,7 @@ class Node():
         return self.lng
 
     # generate successor for the node
-    def createSuccessor(self):
+    def createSuccessor(self, exploredSet, frontier):
 
         distMH = {}
 
@@ -50,7 +50,7 @@ class Node():
             lat2 = self.nodeStore[x].getLat()
             lng2 = self.nodeStore[x].getLng()
             coordId = x
-            print(coordId)
+            # print(coordId)
 
             geoCoord1 = (self.lat, self.lng)
             geoCoord2 = (lat2, lng2)
@@ -61,9 +61,30 @@ class Node():
 
         sortedDistMH = (sorted(distMH.items(), key=lambda kv:
                                (kv[1], kv[0])))
-        print(sortedDistMH)
+        print("sorted MH", sortedDistMH)
 
+        # filtered out node already explored
+        filteredExploredList = []
+        for x in sortedDistMH:
+            if x[0] not in exploredSet:
+                filteredExploredList.append(x)
+
+        # filtered out node in the frontier
+        frontierArray = []
+        for frontierItem in frontier.list:
+            print("frontier Item ", frontierItem.getId())
+            frontierArray.append(frontierItem.getId())
+
+        filteredFrontierList = []
+        for x in filteredExploredList:
+            if x[0] not in frontierArray:
+                filteredFrontierList.append(x)
+
+        print("exploredSet", exploredSet)
+        print("filteredExploredList", filteredExploredList)
+        print("frontierArray", frontierArray)
+        print("filteredFrontierList", filteredFrontierList)
+        # remove successor
         # adding 4 successor to the list
-        for x in range(1, 5):
-            self.successor.append(sortedDistMH[x])
-            print(sortedDistMH[x])
+        for x in range(0, 3):
+            self.successor.append(filteredFrontierList[x])
