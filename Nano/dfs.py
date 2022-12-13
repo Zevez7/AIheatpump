@@ -72,17 +72,6 @@ def depthFirstSearch(data):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 def main():
 
     print(depthFirstSearch(importData))
