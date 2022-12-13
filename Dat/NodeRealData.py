@@ -72,7 +72,7 @@ class Node():
         # filtered out node in the frontier
         frontierArray = []
         for frontierItem in frontier.list:
-            print("frontier Item ", frontierItem.getId())
+            # print("frontier Item ", frontierItem.getId())
             frontierArray.append(frontierItem.getId())
 
         filteredFrontierList = []
@@ -86,5 +86,8 @@ class Node():
         print("filteredFrontierList", filteredFrontierList)
         # remove successor
         # adding 4 successor to the list
-        for x in range(0, 3):
-            self.successor.append(filteredFrontierList[x])
+
+        for x in range(2):
+            if filteredFrontierList:  # if empty_list will evaluate as false.
+                successor = filteredFrontierList.pop(0)
+                self.successor.append(successor)

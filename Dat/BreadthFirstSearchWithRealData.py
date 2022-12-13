@@ -32,7 +32,7 @@ def isNotInFrontier(currentNode, frontier):
         print("frontier Item ", frontierItem.getId())
 
         if frontierItem.getId() == currentNode.getId():
-            print("current node state is in frontier", currentNode.getId())
+            print("current node is in frontier", currentNode.getId())
             return False
     return True
 
@@ -78,7 +78,7 @@ def breadthFirstSearch(data):
 
     # initialized the stack last in first out
     frontier = Queue.Queue()
-    exploredSet = [100003000, 100004000]
+    exploredSet = []
     previousNode = ""
 
     # loop through the data and find the farthest node in the data and return the location
@@ -91,15 +91,14 @@ def breadthFirstSearch(data):
 
     # add first node to frontier
     frontier.push(initialNode)
-    print(initialNode.getId())
+    # print(initialNode.getId())
 
-    initialNode.createSuccessor(exploredSet, frontier)
+    # initialNode.createSuccessor(exploredSet, frontier)
 
-    x = initialNode.getSuccessor()
-    print(x)
+    # x = initialNode.getSuccessor()
+    # print(x)
 
-    # add initialNode to frontier
-    return
+    # return
 
     while True:
         if frontier.isEmpty():
@@ -113,29 +112,32 @@ def breadthFirstSearch(data):
             printEndState(currentNode, nodeStorage)
             return
 
-        # add the explored state
+        # add currentNode Id to the exploredSet
         exploredSet.append(currentNode.getId())
         print("exploredSet", exploredSet)
 
-        # get the next state
+        # generate successor from current node
+        currentNode.createSuccessor(exploredSet, frontier)
+
+        # get the next successorState
         successorState = currentNode.getSuccessor()
         print("successorState", successorState)
 
-        # add currentNodeId to previous State Array
-        previousNode = currentNode.getId()
+        # save currentNodeID
+        currentNodeID = currentNode.getId()
         print("Add current Node Id to previousNode", previousNode)
 
         for item in successorState:
 
-            # get the node for the nodeStorage
-            nextNode = nodeStorage[item["PID"]]
+            nodeId = item[0]
+
+            # get the node from the nodeStorage
+            nextNode = nodeStorage[nodeId]
             print("set the nextNode in successorState", nextNode.getId())
 
-            # set previousNode for all nextNode
-            nextNode.setPreviousNode(previousNode)
-
-            print("previous", nextNode.getPreviousNode())
-            print("explored", exploredSet)
+            # set currentNode to previousNode
+            nextNode.setPreviousNode(currentNodeID)
+            # print("previous", nextNode.getPreviousNode())
 
             # check to see if it's not in exploredSet or in the frontier
             if nextNode.getId() not in exploredSet and isNotInFrontier(nextNode, frontier):
