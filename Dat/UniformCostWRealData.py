@@ -1,7 +1,7 @@
 from collections import defaultdict
-import Queue
+from Queue import PriorityQueue
 import json
-from NodeRealData import Node
+from Node import NodeUniformCost
 from calculatedLongDistance import maxDist
 
 # Opening JSON file
@@ -20,7 +20,7 @@ realDataLoad = json.load(realData)
 
 def createNode(nodeStore, data):
     for item in data:
-        createNode = Node(item, nodeStore)
+        createNode = NodeUniformCost(item, nodeStore)
 
         # store node inside nodeStorage
         nodeStore[createNode.getId()] = createNode
@@ -28,7 +28,7 @@ def createNode(nodeStore, data):
 
 def isNotInFrontier(currentNode, frontier):
 
-    for frontierItem in frontier.list:
+    for frontierItem in frontier.heap:
         print("frontier Item ", frontierItem.getId())
 
         if frontierItem.getId() == currentNode.getId():
@@ -67,17 +67,15 @@ def generateSuccessor(nodeStorage):
         print(x, "node", value)
 
 
-def breadthFirstSearch(data):
+def uniformCostSearch(data):
 
     nodeStorage = defaultdict(list)
 
     # loops through the data and generate a node and store the node inside nodeStorage
     createNode(nodeStorage, data)
 
-    # generate successor for each node and save it in successor location
-
     # initialized the stack last in first out
-    frontier = Queue.Queue()
+    frontier = PriorityQueue()
     exploredSet = []
     previousNode = ""
 
@@ -90,7 +88,7 @@ def breadthFirstSearch(data):
     initialNode = nodeStorage[startState]
 
     # add first node to frontier
-    frontier.push(initialNode)
+    frontier.push(initialNode, 0)
     # print(initialNode.getId())
 
     # initialNode.createSuccessor(exploredSet, frontier)
@@ -108,24 +106,25 @@ def breadthFirstSearch(data):
         # store current node and remove from frontier
         currentNode = frontier.pop()
         print("currentNode", currentNode.getId())
+
         if endState == currentNode.getId():
             printEndState(currentNode, nodeStorage)
             return
 
         # add currentNode Id to the exploredSet
         exploredSet.append(currentNode.getId())
-        print("exploredSet", exploredSet)
+        print("exploredSet:", exploredSet)
 
         # generate successor from current node
         currentNode.createSuccessor(exploredSet, frontier)
 
         # get the next successorState
         successorState = currentNode.getSuccessor()
-        print("successorState", successorState)
+        print("successorState:", successorState)
 
         # save currentNodeID
         currentNodeID = currentNode.getId()
-        print("Add current Node Id to previousNode", previousNode)
+        # print("Add current Node Id to previousNode", previousNode)
 
         for item in successorState:
 
@@ -133,23 +132,31 @@ def breadthFirstSearch(data):
 
             # get the node from the nodeStorage
             nextNode = nodeStorage[nodeId]
-            print("set the nextNode in successorState", nextNode.getId())
+            print("NextNode", nextNode.getId(), nextNode.getCost())
 
             # set currentNode to previousNode
             nextNode.setPreviousNode(currentNodeID)
             # print("previous", nextNode.getPreviousNode())
 
+            nextNodeCost = nextNode.getCost()
+            # update nextNode cost with its current cost and currentNode cost
+            nextNode.setCost(currentNode.getCost()+nextNodeCost)
+
+            print("nextNodeCost", nextNode.getCost())
+            # add nextNode to frontier with priority from cost
+            frontier.push(nextNode, nextNode.getCost())
+
             # check to see if it's not in exploredSet or in the frontier
-            if nextNode.getId() not in exploredSet and isNotInFrontier(nextNode, frontier):
-                print("not in exploredSet adding to frontier", nextNode.getId())
-                frontier.push(nextNode)
-            else:
-                print("nextNode is in not added to frontierlist", nextNode.getId())
+            # if nextNode.getId() not in exploredSet and isNotInFrontier(nextNode, frontier):
+            #     print("Add to frontier", nextNode.getId())
+            #     frontier.push(nextNode)
+            # else:
+            #     print("Not added to frontierlist", nextNode.getId())
 
 
 def main():
     # breadthFirstSearch(homeDataLoad)
-    breadthFirstSearch(realDataLoad)
+    uniformCostSearch(realDataLoad)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 from manhattanDistance import get_manhattan_distance
 
 
-class Node():
+class NodeRealData():
     """A node class for A* Pathfinding"""
 
     def __init__(self, data=None, nodeStore=None):
@@ -13,6 +13,13 @@ class Node():
         self.nodeStore = nodeStore
         self.lat
         self.lng
+        self.cost = 0
+
+    def getCost(self):
+        return self.cost
+
+    def setCost(self, cost):
+        self.cost = cost
 
     def getSuccessor(self):
         return self.successor
@@ -61,7 +68,7 @@ class Node():
 
         sortedDistMH = (sorted(distMH.items(), key=lambda kv:
                                (kv[1], kv[0])))
-        print("sorted MH", sortedDistMH)
+        # print("sorted MH", sortedDistMH)
 
         # filtered out node already explored
         filteredExploredList = []
@@ -80,10 +87,10 @@ class Node():
             if x[0] not in frontierArray:
                 filteredFrontierList.append(x)
 
-        print("exploredSet", exploredSet)
-        print("filteredExploredList", filteredExploredList)
-        print("frontierArray", frontierArray)
-        print("filteredFrontierList", filteredFrontierList)
+        # print("exploredSet", exploredSet)
+        # print("filteredExploredList", filteredExploredList)
+        # print("frontierArray", frontierArray)
+        # print("filteredFrontierList", filteredFrontierList)
         # remove successor
         # adding 4 successor to the list
 
