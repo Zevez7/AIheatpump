@@ -5,22 +5,34 @@ from Queue import PriorityQueue
 from calculatedLongDistance import maxDist
 from Node import NodeASar
 
-data = open('./data/realDataMod.json')
-data = open('./data/realData100.json')
+# data = open('./data/realDataMod.json')
+data100 = open('./data/realData100.json')
 
 # returns JSON object as
 # a dictionary
 # importData = json.load(f)
 # homeDataLoad = json.load(homeData)
-DataLoad = json.load(data)
+DataLoad = json.load(data100)
 
 
 def heuristic(node):
     data = node.getData()
-    if data["acType"] == "C - Central AC" or data["heatType"] == "F - Forced Hot Air":
-        return 100
-    else:
-        return 10
+    if "actype" in data.keys():
+        if data["actype"] == "C - Central AC":
+            return 100
+        else:
+            return 10
+
+
+    if "heattype" in data.keys():
+        if data["heattype"] == "F - Forced Hot Air":
+            return 100
+        else:
+            return 10
+
+    return 10
+
+
 
 
 def createNode(nodeStore, data):
@@ -81,7 +93,7 @@ def AStarSearch(data):
 
     # testing that heuristic works
     for item in nodeStorage:
-        print("this is item", nodeStorage[item])
+
         print("heuristic", heuristic(nodeStorage[item]))
 
     # initialized the stack last in first out
@@ -169,6 +181,7 @@ def AStarSearch(data):
 
 def main():
     # breadthFirstSearch(homeDataLoad)
+
     AStarSearch(DataLoad)
 
 
