@@ -1,0 +1,133 @@
+[
+  {
+    "previous node": {
+      "pid": 100070000,
+      "stnum": "427 A427",
+      "stname": "SARATOGA ST",
+      "city": "EAST BOSTON",
+      "zipcode": 2128,
+      "fullAddress": "427 A427 SARATOGA ST EAST BOSTON 2128 ",
+      "latitude": 42.3827133,
+      "longitude": -70.9947148999999,
+      "ludesc": "TWO-FAM DWELLING",
+      "yrbuilt": 1910,
+      "heattype": "W - Ht Water/Steam",
+      "actype": "N - None"
+    }
+  },
+  {
+    "previous node": {
+      "pid": 100026000,
+      "stnum": 31,
+      "stname": "PRESCOTT ST",
+      "city": "EAST BOSTON",
+      "zipcode": 2128,
+      "fullAddress": "31 PRESCOTT ST EAST BOSTON 2128 ",
+     "latitude": 42.3799402,
+      "longitude": -71.0306245,
+      "ludesc": "TWO-FAM DWELLING",
+      "yrbuilt": 1900,
+      "yrremodel": 2004,
+      "heattype": "W - Ht Water/Steam",
+      "actype": "N - None"
+    }
+  },
+  {
+    "previous node": {
+      "pid": 100014000,
+      "stnum": 225,
+      "stname": "LEXINGTON ST",
+      "city": "EAST BOSTON",
+      "zipcode": 2128,
+      "fullAddress": "225 LEXINGTON ST EAST BOSTON 2128 ",
+      "latitude": 42.3797281,
+      "longitude": -71.0315531,
+      "ludesc": "THREE-FAM DWELLING",
+      "yrbuilt": 1900,
+      "yrremodel": 2018,
+      "heattype": "W - Ht Water/Steam",
+      "actype": "N - None"
+    }
+  },
+  {
+    "previous node": {
+      "pid": 100009000,
+      "stnum": 215,
+      "stname": "LEXINGTON ST",
+      "city": "EAST BOSTON",
+      "zipcode": 2128,
+      "fullAddress": "215 LEXINGTON ST EAST BOSTON 2128 ",
+      "latitude": 42.3795374,
+      "longitude": -71.0319997,
+      "ludesc": "THREE-FAM DWELLING",
+      "yrbuilt": 1900,
+      "yrremodel": 1998,
+      "heattype": "W - Ht Water/Steam",
+      "actype": "N - None"
+    }
+  },
+  {
+    "previous node": {
+      "pid": 100045000,
+      "stnum": 214,
+      "stname": "PRINCETON ST",
+      "city": "EAST BOSTON",
+      "zipcode": 2128,
+      "fullAddress": "214 PRINCETON ST EAST BOSTON 2128 ",
+      "latitude": 42.3791914,
+      "longitude": -71.0320129999999,
+      "ludesc": "THREE-FAM DWELLING",
+      "yrbuilt": 1900,
+      "yrremodel": 2001,
+      "heattype": "W - Ht Water/Steam",
+      "actype": "N - None"
+    }
+  },
+  {
+    "previous node": {
+      "pid": 100049000,
+      "stnum": 204,
+      "stname": "PRINCETON ST",
+      "city": "EAST BOSTON",
+      "zipcode": 2128,
+      "fullAddress": "204 PRINCETON ST EAST BOSTON 2128 ",
+      "latitude": 42.3790738,
+      "longitude": -71.0322087999999,
+      "ludesc": "THREE-FAM DWELLING",
+      "yrbuilt": 1900,
+      "yrremodel": 2009,
+      "heattype": "F - Forced Hot Air",
+      "actype": "N - None"
+    }
+  },
+  {
+    "previous node": {
+      "pid": 100051000,
+      "stnum": "198  200",
+      "stname": "PRINCETON ST",
+      "city": "EAST BOSTON",
+      "zipcode": 2128,
+      "fullAddress": "198  200 PRINCETON ST EAST BOSTON 2128 ",
+      "latitude": 42.3790235,
+      "longitude": -71.0323481,
+      "ludesc": "APT 4-6 UNITS",
+      "yrbuilt": 1900
+    }
+  },
+  {
+    "previous node": {
+      "pid": 100021000,
+      "stnum": "243 HF",
+      "stname": "LEXINGTON ST",
+      "city": "EAST BOSTON",
+      "zipcode": 2128,
+      "fullAddress": "243 HF LEXINGTON ST EAST BOSTON 2128 ",
+      "latitude": 42.3786683,
+      "longitude": -71.034939,
+      "ludesc": "SINGLE FAM DWELLING",
+      "yrbuilt": 1910,
+      "yrremodel": 1965,
+      "heattype": "W - Ht Water/Steam",
+      "actype": "N - None"
+    }
+  }]
