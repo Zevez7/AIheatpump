@@ -29,7 +29,7 @@ class Node():
         self.successor = self.data["SUCCESSOR"]
 
 
-class NodeRealData():
+class NodeBFS():
     """A node class for A* Pathfinding"""
 
     def __init__(self, data=None, nodeStore=None):
@@ -128,7 +128,7 @@ class NodeRealData():
                 self.successor.append(successor)
 
 
-class NodeUniformCost():
+class NodeUCS():
 
     def __init__(self, data=None, nodeStore=None):
         self.id = ""
@@ -228,7 +228,9 @@ class NodeUniformCost():
             if filteredFrontierList:  # if empty_list will evaluate as false.
                 successor = filteredFrontierList.pop(0)
                 self.successor.append(successor)
-class NodeASar():
+
+
+class NodeAStar():
 
     def __init__(self, data=None, nodeStore=None):
         self.id = ""

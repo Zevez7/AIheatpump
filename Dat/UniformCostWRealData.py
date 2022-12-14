@@ -1,26 +1,26 @@
 from collections import defaultdict
 from Queue import PriorityQueue
 import json
-from Node import NodeUniformCost
+from Node import NodeUCS
 from calculatedLongDistance import maxDist
 
 # Opening JSON file
 mockedData = open('./data/mockData.json')
 homeData = open('./data/homeData.json')
-realData = open('./data/realData.json')
+data = open('./data/realData100.json')
 
 # returns JSON object as
 # a dictionary
 # importData = json.load(f)
 # homeDataLoad = json.load(homeData)
-realDataLoad = json.load(realData)
+DataLoad = json.load(data)
 
 # print(realDataLoad)
 
 
 def createNode(nodeStore, data):
     for item in data:
-        createNode = NodeUniformCost(item, nodeStore)
+        createNode = NodeUCS(item, nodeStore)
 
         # store node inside nodeStorage
         nodeStore[createNode.getId()] = createNode
@@ -148,7 +148,7 @@ def uniformCostSearch(data):
 
 def main():
     # breadthFirstSearch(homeDataLoad)
-    uniformCostSearch(realDataLoad)
+    uniformCostSearch(DataLoad)
 
 
 if __name__ == "__main__":

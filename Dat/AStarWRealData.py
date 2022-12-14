@@ -3,10 +3,10 @@ from collections import defaultdict
 from Queue import PriorityQueue
 
 from calculatedLongDistance import maxDist
-from Node import NodeASar
+from Node import NodeAStar
 
 data = open('./data/realDataMod.json')
-data = open('./data/realData100.json')
+# data = open('./data/realData100.json')
 
 # returns JSON object as
 # a dictionary
@@ -25,7 +25,7 @@ def heuristic(node):
 
 def createNode(nodeStore, data):
     for item in data:
-        createNode = NodeASar(item, nodeStore)
+        createNode = NodeAStar(item, nodeStore)
 
         # store node inside nodeStorage
         nodeStore[createNode.getId()] = createNode

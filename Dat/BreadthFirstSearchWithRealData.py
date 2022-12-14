@@ -1,26 +1,24 @@
 from collections import defaultdict
 import Queue
 import json
-from Node import NodeRealData
+from Node import NodeBFS
 from calculatedLongDistance import maxDist
 
 # Opening JSON file
-mockedData = open('./data/mockData.json')
-homeData = open('./data/homeData.json')
-realData = open('./data/realData.json')
+# mockedData = open('./data/mockData.json')
+# homeData = open('./data/homeData.json')
+# data = open('./data/realData.json')
+data = open('./data/realData100.json')
 
 # returns JSON object as
-# a dictionary
-# importData = json.load(f)
-# homeDataLoad = json.load(homeData)
-realDataLoad = json.load(realData)
+DataLoad = json.load(data)
 
 # print(realDataLoad)
 
 
 def createNode(nodeStore, data):
     for item in data:
-        createNode = NodeRealData(item, nodeStore)
+        createNode = NodeBFS(item, nodeStore)
 
         # store node inside nodeStorage
         nodeStore[createNode.getId()] = createNode
@@ -149,7 +147,7 @@ def breadthFirstSearch(data):
 
 def main():
     # breadthFirstSearch(homeDataLoad)
-    breadthFirstSearch(realDataLoad)
+    breadthFirstSearch(DataLoad)
 
 
 if __name__ == "__main__":
