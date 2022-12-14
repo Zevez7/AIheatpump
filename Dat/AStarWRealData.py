@@ -2,26 +2,25 @@ import json
 from collections import defaultdict
 from Queue import PriorityQueue
 
-from AIheatpump.Dat.calculatedLongDistance import maxDist
+from calculatedLongDistance import maxDist
 from Node import NodeASar
 
-realData = open('./data/realData.json')
+data = open('./data/realDataMod.json')
+data = open('./data/realData100.json')
 
 # returns JSON object as
 # a dictionary
 # importData = json.load(f)
 # homeDataLoad = json.load(homeData)
-realDataLoad = json.load(realData)
-
+DataLoad = json.load(data)
 
 
 def heuristic(node):
     data = node.getData()
-    if data["acType"] == "C - Central AC":
+    if data["acType"] == "C - Central AC" or data["heatType"] == "F - Forced Hot Air":
         return 100
     else:
         return 10
-
 
 
 def createNode(nodeStore, data):
@@ -77,14 +76,8 @@ def AStarSearch(data):
 
     nodeStorage = defaultdict(list)
 
-
-
-
     # loops through the data and generate a node and store the node inside nodeStorage
     createNode(nodeStorage, data)
-
-
-
 
     # testing that heuristic works
     for item in nodeStorage:
@@ -106,6 +99,8 @@ def AStarSearch(data):
 
     # add first node to frontier
     frontier.push(initialNode, heuristic(initialNode))
+
+    frontier.heap
 
     # print(initialNode.getId())
 
@@ -174,21 +169,8 @@ def AStarSearch(data):
 
 def main():
     # breadthFirstSearch(homeDataLoad)
-    AStarSearch(realDataLoad)
+    AStarSearch(DataLoad)
 
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
