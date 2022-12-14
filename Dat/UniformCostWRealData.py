@@ -89,14 +89,6 @@ def uniformCostSearch(data):
 
     # add first node to frontier
     frontier.push(initialNode, 0)
-    # print(initialNode.getId())
-
-    # initialNode.createSuccessor(exploredSet, frontier)
-
-    # x = initialNode.getSuccessor()
-    # print(x)
-
-    # return
 
     while True:
         if frontier.isEmpty():
