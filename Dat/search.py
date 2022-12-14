@@ -354,7 +354,6 @@ def uniformCostSearch(problem: SearchProblem):
 
 
 def nullHeuristic(state, problem=None):
-    nodeStorages =
     
     
     """
