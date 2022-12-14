@@ -50,9 +50,9 @@ def printEndState(currentNode, nodeStorage):
 
 def startAndEndNodeId(nodeStorage):
     dataArray = []
+    print(nodeStorage)
     # generate the start and end state nodes
     for x in nodeStorage:
-
         dataArray.append([nodeStorage[x].getLat(),
                           nodeStorage[x].getLng(), nodeStorage[x].getId()])
     startAndEndpoint = maxDist(dataArray)

@@ -29,7 +29,7 @@ class Node():
         self.successor = self.data["SUCCESSOR"]
 
 
-class NodeUniformCost():
+class NodeRealData():
     """A node class for A* Pathfinding"""
 
     def __init__(self, data=None, nodeStore=None):
@@ -177,8 +177,10 @@ class NodeUniformCost():
     # generate successor for the node
     def createSuccessor(self, exploredSet, frontier):
 
+        # dictionary
         distMH = {}
 
+        # loop through the node
         for x in self.nodeStore:
             lat2 = self.nodeStore[x].getLat()
             lng2 = self.nodeStore[x].getLng()
@@ -190,11 +192,12 @@ class NodeUniformCost():
             # print(geoCoord2)
             weightedValue = 10000000
             dist = get_manhattan_distance(geoCoord1, geoCoord2)*weightedValue
+
             distMH[coordId] = int(dist)
 
+        # print(distMH)
         sortedDistMH = (sorted(distMH.items(), key=lambda kv:
                                (kv[1], kv[0])))
-        # print("sorted MH", sortedDistMH)
 
         # filtered out node already explored
         filteredExploredList = []
@@ -205,7 +208,7 @@ class NodeUniformCost():
         # filtered out node in the frontier
         frontierArray = []
         for frontierItem in frontier.heap:
-            # print(frontierItem[2].getId())
+            # print(frontierItem)
             # print("frontier Item ", frontierItem.getId())
             frontierArray.append(frontierItem[2].getId())
 
@@ -214,10 +217,10 @@ class NodeUniformCost():
             if x[0] not in frontierArray:
                 filteredFrontierList.append(x)
 
-        # print("exploredSet", exploredSet)
-        # print("filteredExploredList", filteredExploredList)
-        # print("frontierArray", frontierArray)
-        # print("filteredFrontierList", filteredFrontierList)
+        print("exploredSet", exploredSet)
+        print("filteredExploredList", filteredExploredList)
+        print("frontierArray", frontierArray)
+        print("filteredFrontierList", filteredFrontierList)
         # remove successor
         # adding 4 successor to the list
 
