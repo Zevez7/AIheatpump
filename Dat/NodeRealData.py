@@ -1,7 +1,7 @@
 from manhattanDistance import get_manhattan_distance
 
 
-class NodeRealData():
+class NodeRealData:
     """A node class for A* Pathfinding"""
 
     def __init__(self, data=None, nodeStore=None):

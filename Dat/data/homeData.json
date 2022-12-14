@@ -5,7 +5,7 @@
     "CITY": "city 2",
     "LONGITUDE": 1,
     "LATITUDE": 2,
-    "SUCCESSOR": [{ "PID": 2 }, { "PID": 3 }]
+    "SUCCESSOR": [{ "PID": 2 }, { "PID": 3 }],
   },
   {
     "PID": 2,
