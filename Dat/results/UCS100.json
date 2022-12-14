@@ -1,63 +1,54 @@
 [
   {
-    "previous node": {
-      "pid": 100010000,
-      "streetNumber": 217,
-      "stname": "LEXINGTON ST",
-      "city": "EAST BOSTON",
-      "zipcode": 2128,
-      "fullAddress": " '217 LEXINGTON ST EAST BOSTON 2128 '",
-      "latitude": 42.3796407,
-      "longitude": -71.0319532,
-      "yrBuilt": 1900,
-      "heatType": "W - Ht Water/Steam",
-      "acType": "N - None"
-    }
-  },
-
-  {
-    "previous node": {
-      "pid": 100005000,
-      "streetNumber": 203,
-      "stname": "LEXINGTON ST",
-      "city": "EAST BOSTON",
-      "zipcode": 2128,
-      "fullAddress": "203 LEXINGTON ST EAST BOSTON 2128",
-      "latitude": 42.3794744,
-      "longitude": -71.0323362,
-      "yrBuilt": 1900,
-      "heatType": "W - Ht Water/Steam",
-      "acType": "N - None"
-    }
+    "pid": 100010000,
+    "streetNumber": 217,
+    "stname": "LEXINGTON ST",
+    "city": "EAST BOSTON",
+    "zipcode": 2128,
+    "fullAddress": "217 LEXINGTON ST EAST BOSTON 2128 ",
+    "latitude": 42.3796407,
+    "longitude": -71.0319532,
+    "yrBuilt": 1900,
+    "heatType": "W - Ht Water/Steam",
+    "acType": "N - None"
   },
   {
-    "previous node": {
-     "pid": 100002000,
-      "streetNumber": 197,
-      "stname": "LEXINGTON ST",
-      "city": "EAST BOSTON",
-      "zipcode": 2128,
-      "fullAddress": "197 LEXINGTON ST EAST BOSTON 2128",
-      "latitude": 42.3794213,
-      "longitude": -71.0325154,
-      "yrBuilt": 1920,
-      "heatType": "F - Forced Hot Air",
-      "acType": "C - Central AC"
-    }
+    "pid": 100005000,
+    "streetNumber": 203,
+    "stname": "LEXINGTON ST",
+    "city": "EAST BOSTON",
+    "zipcode": 2128,
+    "fullAddress": "203 LEXINGTON ST EAST BOSTON 2128 ",
+    "latitude": 42.3794744,
+    "longitude": -71.0323362,
+    "yrBuilt": 1900,
+    "heatType": "W - Ht Water/Steam",
+    "acType": "N - None"
   },
   {
-    "previous node": {
-      "pid": 100001000,
-      "streetNumber": "104 A 104",
-      "stname": "PUTNAM ST",
-      "city": "EAST BOSTON",
-      "zipcode": 2128,
-      "fullAddress": "104 A 104 PUTNAM ST EAST BOSTON 2128",
-      "latitude": 42.3793739,
-      "longitude": -71.0326157,
-      "yrBuilt": 1900,
-      "heatType": "W - Ht Water/Steam",
-      "acType": "N - None"
-    }
+    "pid": 100002000,
+    "streetNumber": 197,
+    "stname": "LEXINGTON ST",
+    "city": "EAST BOSTON",
+    "zipcode": 2128,
+    "fullAddress": "197 LEXINGTON ST EAST BOSTON 2128 ",
+    "latitude": 42.3794213,
+    "longitude": -71.0325154,
+    "yrBuilt": 1920,
+    "heatType": "F - Forced Hot Air",
+    "acType": "C - Central AC"
+  },
+  {
+    "pid": 100001000,
+    "streetNumber": "104 A 104",
+    "stname": "PUTNAM ST",
+    "city": "EAST BOSTON",
+    "zipcode": 2128,
+    "fullAddress": "104 A 104 PUTNAM ST EAST BOSTON 2128 ",
+    "latitude": 42.3793739,
+    "longitude": -71.0326157,
+    "yrBuilt": 1900,
+    "heatType": "W - Ht Water/Steam",
+    "acType": "N - None"
   }
 ]

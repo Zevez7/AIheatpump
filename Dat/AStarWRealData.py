@@ -23,7 +23,6 @@ def heuristic(node):
         else:
             return 10
 
-
     if "heattype" in data.keys():
         if data["heattype"] == "F - Forced Hot Air":
             return 100
@@ -31,8 +30,6 @@ def heuristic(node):
             return 10
 
     return 10
-
-
 
 
 def createNode(nodeStore, data):
@@ -59,10 +56,15 @@ def printEndState(currentNode, nodeStorage):
     print("endNode Reached ID:", currentNode.getId())
     iterNode = currentNode
 
+    nodePath = []
+
     while iterNode.getPreviousNode() != "":
-        print("previous node", iterNode.getData())
+        # print("previous node", iterNode.getData())
+        nodePath.append(iterNode.getData())
         iterNode = nodeStorage[iterNode.getPreviousNode()]
-    print("previous node", iterNode.getData())
+    # print("previous node", iterNode.getData())
+    nodePath.append(iterNode.getData())
+    print(nodePath)
 
 
 def startAndEndNodeId(nodeStorage):

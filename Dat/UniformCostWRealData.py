@@ -38,15 +38,23 @@ def isNotInFrontier(currentNode, frontier):
     return True
 
 
+
+
+
 def printEndState(currentNode, nodeStorage):
     print("endstate reached terminated program")
     print("endNode Reached ID:", currentNode.getId())
     iterNode = currentNode
 
+    nodePath = []
+
     while iterNode.getPreviousNode() != "":
-        print("previous node", iterNode.getData())
+        # print("previous node", iterNode.getData())
+        nodePath.append(iterNode.getData())
         iterNode = nodeStorage[iterNode.getPreviousNode()]
-    print("previous node", iterNode.getData())
+    # print("previous node", iterNode.getData())
+    nodePath.append(iterNode.getData())
+    print(nodePath)
 
 
 def startAndEndNodeId(nodeStorage):
