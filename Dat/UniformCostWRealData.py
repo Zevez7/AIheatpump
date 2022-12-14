@@ -8,12 +8,14 @@ from calculatedLongDistance import maxDist
 mockedData = open('./data/mockData.json')
 homeData = open('./data/homeData.json')
 realData = open('./data/realData.json')
+data100 = open('./data/realData100.json')
 
 # returns JSON object as
 # a dictionary
 # importData = json.load(f)
 # homeDataLoad = json.load(homeData)
 realDataLoad = json.load(realData)
+realDataLoad100 = json.load(data100)
 
 # print(realDataLoad)
 
@@ -148,7 +150,7 @@ def uniformCostSearch(data):
 
 def main():
     # breadthFirstSearch(homeDataLoad)
-    uniformCostSearch(realDataLoad)
+    uniformCostSearch(realDataLoad100)
 
 
 if __name__ == "__main__":
