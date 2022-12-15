@@ -95,8 +95,15 @@ def AStarSearch(data):
 
     # testing that heuristic works
     for item in nodeStorage:
-
-        print("heuristic", heuristic(nodeStorage[item]))
+        data = nodeStorage[item].getData()
+        heattype = ""
+        actype = ""
+        if "heattype" in data.keys():
+            heattype = data["heattype"]
+        if "actype" in data.keys():
+            actype = data["actype"]
+        print("heuristic", heuristic(
+            nodeStorage[item]), nodeStorage[item].getId(), heattype, actype)
 
     # initialized the stack last in first out
     frontier = PriorityQueue()
@@ -132,7 +139,7 @@ def AStarSearch(data):
 
         # store current node and remove from frontier
         currentNode = frontier.pop()
-        print("currentNode", currentNode.getId())
+        # print("currentNode", currentNode.getId())
 
         if endState == currentNode.getId():
             printEndState(currentNode, nodeStorage)
@@ -140,14 +147,14 @@ def AStarSearch(data):
 
         # add currentNode Id to the exploredSet
         exploredSet.append(currentNode.getId())
-        print("exploredSet:", exploredSet)
+        # print("exploredSet:", exploredSet)
 
         # generate successor from current node
         currentNode.createSuccessor(exploredSet, frontier)
 
         # get the next successorState
         successorState = currentNode.getSuccessor()
-        print("successorState:", successorState)
+        # print("successorState:", successorState)
 
         # save currentNodeID
         currentNodeID = currentNode.getId()
@@ -159,7 +166,7 @@ def AStarSearch(data):
 
             # get the node from the nodeStorage
             nextNode = nodeStorage[nodeId]
-            print("NextNode", nextNode.getId(), nextNode.getCost())
+            # print("NextNode", nextNode.getId(), nextNode.getCost())
 
             # set currentNode to previousNode
             nextNode.setPreviousNode(currentNodeID)
@@ -169,7 +176,7 @@ def AStarSearch(data):
             # update nextNode cost with its current cost and currentNode cost
             nextNode.setCost(currentNode.getCost()+nextNodeCost)
 
-            print("nextNodeCost", nextNode.getCost())
+            # print("nextNodeCost", nextNode.getCost())
             # add nextNode to frontier with priority from cost+ heuristic
             frontier.push(nextNode, nextNode.getCost() + heuristic(nextNode))
 
