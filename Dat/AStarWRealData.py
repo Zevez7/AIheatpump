@@ -20,12 +20,11 @@ def heuristic(node):
     if "heattype" not in data.keys() and "actype" not in data.keys():
         return 100
 
-    if "actype" in data.keys() and data["actype"] == "C - Central AC" :
+    if "actype" in data.keys() and data["actype"] == "C - Central AC":
         return 100
 
     if "heattype" in data.keys() and data["heattype"] == "F - Forced Hot Air":
         return 100
-
 
     return 10
 
@@ -137,7 +136,7 @@ def AStarSearch(data):
 
         # store current node and remove from frontier
         currentNode = frontier.pop()
-        # print("currentNode", currentNode.getId())
+        print("currentNode pop", currentNode.getId())
 
         if endState == currentNode.getId():
             printEndState(currentNode, nodeStorage)
@@ -152,7 +151,7 @@ def AStarSearch(data):
 
         # get the next successorState
         successorState = currentNode.getSuccessor()
-        # print("successorState:", successorState)
+        print("successorState:", successorState)
 
         # save currentNodeID
         currentNodeID = currentNode.getId()

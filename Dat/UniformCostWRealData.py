@@ -5,16 +5,16 @@ from Node import NodeUCS
 from calculatedLongDistance import maxDist
 
 # Opening JSON file
-mockedData = open('./data/mockData.json')
-homeData = open('./data/homeData.json')
-realData = open('./data/realData.json')
+# mockedData = open('./data/mockData.json')
+# homeData = open('./data/homeData.json')
+# realData = open('./data/realData.json')
 data100 = open('./data/realData100.json')
 
 # returns JSON object as
 # a dictionary
 # importData = json.load(f)
 # homeDataLoad = json.load(homeData)
-realDataLoad = json.load(realData)
+DataLoad = json.load(data100)
 
 # print(realDataLoad)
 
@@ -36,9 +36,6 @@ def isNotInFrontier(currentNode, frontier):
             print("current node is in frontier", currentNode.getId())
             return False
     return True
-
-
-
 
 
 def printEndState(currentNode, nodeStorage):
@@ -157,7 +154,7 @@ def uniformCostSearch(data):
 
 def main():
     # breadthFirstSearch(homeDataLoad)
-    uniformCostSearch(realDataLoad)
+    uniformCostSearch(DataLoad)
 
 
 if __name__ == "__main__":

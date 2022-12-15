@@ -241,7 +241,7 @@ class NodeAStar():
         self.nodeStore = nodeStore
         self.lat
         self.lng
-        self.cost = 10
+        self.cost = 1
 
     def getCost(self):
         return self.cost
