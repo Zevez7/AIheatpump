@@ -4,8 +4,8 @@ import json
 import Node
 
 # Opening JSON file
-f = open('./data/mockData.json')
-homeData = open('./data/homeData.json')
+f = open('../final-codes/data/mockData.json')
+homeData = open('../final-codes/data/homeData.json')
 
 # returns JSON object as
 # a dictionary

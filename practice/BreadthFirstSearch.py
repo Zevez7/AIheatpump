@@ -3,7 +3,7 @@ import Queue
 import json
 
 # Opening JSON file
-f = open('./data/mockData.json')
+f = open('../final-codes/data/mockData.json')
 
 # returns JSON object as
 # a dictionary
