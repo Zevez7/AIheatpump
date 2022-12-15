@@ -17,17 +17,15 @@ DataLoad = json.load(data100)
 
 def heuristic(node):
     data = node.getData()
-    if "actype" in data.keys():
-        if data["actype"] == "C - Central AC":
-            return 100
-        else:
-            return 10
+    if "heattype" not in data.keys() and "actype" not in data.keys():
+        return 100
 
-    if "heattype" in data.keys():
-        if data["heattype"] == "F - Forced Hot Air":
-            return 100
-        else:
-            return 10
+    if "actype" in data.keys() and data["actype"] == "C - Central AC" :
+        return 100
+
+    if "heattype" in data.keys() and data["heattype"] == "F - Forced Hot Air":
+        return 100
+
 
     return 10
 
